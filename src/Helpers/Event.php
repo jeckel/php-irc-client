@@ -4,6 +4,8 @@ namespace Jerodev\PhpIrcClient\Helpers;
 
 class Event
 {
+    public const WHOIS = 'whois';
+
     /** @var string */
     private $event;
 

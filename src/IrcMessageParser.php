@@ -11,6 +11,7 @@ use Jerodev\PhpIrcClient\Messages\PingMessage;
 use Jerodev\PhpIrcClient\Messages\PrivmsgMessage;
 use Jerodev\PhpIrcClient\Messages\TopicChangeMessage;
 use Jerodev\PhpIrcClient\Messages\WelcomeMessage;
+use Jerodev\PhpIrcClient\Messages\WhoisMessage;
 
 class IrcMessageParser
 {
@@ -56,6 +57,10 @@ class IrcMessageParser
 
             case IrcCommand::RPL_WELCOME:
                 $msg = new WelcomeMessage($message);
+                break;
+
+            case IrcCommand::RPL_WHOISUSER:
+                $msg = new WhoisMessage($message);
                 break;
 
             case 'TOPIC':
