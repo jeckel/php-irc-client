@@ -115,7 +115,7 @@ class IrcMessage
         return $this->command;
     }
 
-    public function commandSuffix(): string
+    public function commandSuffix(): ?string
     {
         return $this->commandsuffix;
     }
