@@ -4,7 +4,10 @@ namespace Jerodev\PhpIrcClient\Helpers;
 
 class Event
 {
-    public const WHOIS = 'whois';
+    public const
+        WHOIS = 'whois',
+        JOIN = 'join_channel'
+    ;
 
     /** @var string */
     private $event;

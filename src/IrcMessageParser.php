@@ -4,6 +4,7 @@ namespace Jerodev\PhpIrcClient;
 
 use Generator;
 use Jerodev\PhpIrcClient\Messages\IrcMessage;
+use Jerodev\PhpIrcClient\Messages\JoinMessage;
 use Jerodev\PhpIrcClient\Messages\KickMessage;
 use Jerodev\PhpIrcClient\Messages\MOTDMessage;
 use Jerodev\PhpIrcClient\Messages\NameReplyMessage;
@@ -74,6 +75,10 @@ class IrcMessageParser
 
             case IrcCommand::RPL_MOTD:
                 $msg = new MOTDMessage($message);
+                break;
+
+            case 'JOIN':
+                $msg = new JoinMessage($message);
                 break;
 
             default:
