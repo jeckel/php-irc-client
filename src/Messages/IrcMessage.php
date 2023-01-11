@@ -120,7 +120,7 @@ class IrcMessage
         return $this->commandsuffix;
     }
 
-    public function payload(): string
+    public function payload(): ?string
     {
         return $this->payload;
     }
