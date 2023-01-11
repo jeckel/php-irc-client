@@ -10,22 +10,22 @@ use Jerodev\PhpIrcClient\Options\ClientOptions;
 class IrcClient
 {
     /** @var IrcChannel[] */
-    private $channels;
+    protected $channels;
 
     /** @var IrcConnection */
-    private $connection;
+    protected $connection;
 
     /** @var bool */
-    private $isAuthenticated;
+    protected $isAuthenticated;
 
     /** @var EventHandlerCollection */
-    private $messageEventHandlers;
+    protected $messageEventHandlers;
 
     /** @var ClientOptions */
-    private $options;
+    protected $options;
 
     /** @var IrcUser|null */
-    private $user;
+    protected $user;
 
     /**
      *  Create a new IrcClient instance.
@@ -217,7 +217,7 @@ class IrcClient
      *
      *  @param IrcMessage $message The message object for the received line.
      */
-    private function handleIrcMessage(IrcMessage $message): void
+    protected function handleIrcMessage(IrcMessage $message): void
     {
         $message->injectChannel($this->channels);
         $message->handle($this);
@@ -240,7 +240,7 @@ class IrcClient
      *
      *  @return string The formatted name.
      */
-    private function channelName(string $channel): string
+    protected function channelName(string $channel): string
     {
         if ($channel[0] !== '#') {
             $channel = "#$channel";
