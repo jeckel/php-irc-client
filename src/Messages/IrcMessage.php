@@ -109,4 +109,19 @@ class IrcMessage
     {
         return $this->rawMessage;
     }
+
+    public function command(): string
+    {
+        return $this->command;
+    }
+
+    public function commandSuffix(): string
+    {
+        return $this->commandsuffix;
+    }
+
+    public function payload(): string
+    {
+        return $this->payload;
+    }
 }
