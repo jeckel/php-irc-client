@@ -104,4 +104,9 @@ class IrcMessage
             $this->commandsuffix = substr($command, $j + 1);
         }
     }
+
+    public function rawMessage(): string
+    {
+        return $this->rawMessage;
+    }
 }
