@@ -12,6 +12,7 @@ use Jerodev\PhpIrcClient\Messages\PingMessage;
 use Jerodev\PhpIrcClient\Messages\PrivmsgMessage;
 use Jerodev\PhpIrcClient\Messages\TopicChangeMessage;
 use Jerodev\PhpIrcClient\Messages\WelcomeMessage;
+use Jerodev\PhpIrcClient\Messages\WhoisChannelsMessage;
 use Jerodev\PhpIrcClient\Messages\WhoisMessage;
 
 class IrcMessageParser
@@ -45,48 +46,29 @@ class IrcMessageParser
     {
         switch ($this->getCommand($message)) {
             case 'KICK':
-                $msg = new KickMessage($message);
-                break;
-
+                return new KickMessage($message);
             case 'PING':
-                $msg = new PingMessage($message);
-                break;
-
+                return new PingMessage($message);
             case 'PRIVMSG':
-                $msg = new PrivmsgMessage($message);
-                break;
-
+                return new PrivmsgMessage($message);
             case IrcCommand::RPL_WELCOME:
-                $msg = new WelcomeMessage($message);
-                break;
-
+                return new WelcomeMessage($message);
             case IrcCommand::RPL_WHOISUSER:
-                $msg = new WhoisMessage($message);
-                break;
-
+                return new WhoisMessage($message);
+            case IrcCommand::RPL_WHOISCHANNELS:
+                return new WhoisChannelsMessage($message);
             case 'TOPIC':
             case IrcCommand::RPL_TOPIC:
-                $msg = new TopicChangeMessage($message);
-                break;
-
+                return new TopicChangeMessage($message);
             case IrcCommand::RPL_NAMREPLY:
-                $msg = new NameReplyMessage($message);
-                break;
-
+                return new NameReplyMessage($message);
             case IrcCommand::RPL_MOTD:
-                $msg = new MOTDMessage($message);
-                break;
-
+                return new MOTDMessage($message);
             case 'JOIN':
-                $msg = new JoinMessage($message);
-                break;
-
+                return new JoinMessage($message);
             default:
-                $msg = new IrcMessage($message);
-                break;
+                return new IrcMessage($message);
         }
-
-        return $msg;
     }
 
     /**

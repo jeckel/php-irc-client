@@ -6,6 +6,7 @@ class Event
 {
     public const
         WHOIS = 'whois',
+        WHOIS_CHANNELS = 'whois_channels',
         JOIN = 'join_channel'
     ;
 
